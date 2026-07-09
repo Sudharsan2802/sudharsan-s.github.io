@@ -1,560 +1,514 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sudharsan S — RPA Developer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sudharsan S — RPA Developer & Automation Support Engineer</title>
+<meta name="description" content="Portfolio of Sudharsan S, RPA Developer & Automation Support Engineer specializing in Automation Anywhere, bot production support, and incident management.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0E1420;
+    --panel: #151D2B;
+    --panel-hi: #1B2434;
+    --line: #26314238;
+    --line-solid: #263142;
+    --ink: #E7EDF5;
+    --ink-dim: #8D99AC;
+    --ink-faint: #5C6B80;
+    --green: #3FD68A;
+    --green-dim: #3FD68A22;
+    --amber: #E8B34C;
+    --amber-dim: #E8B34C22;
+    --blue: #64A8FF;
+    --blue-dim: #64A8FF1c;
+    --red: #F0725E;
+    --radius: 10px;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --disp: 'Space Grotesk', sans-serif;
+    --body: 'Inter', sans-serif;
+  }
 
-    :root {
-      --bg:        #0b0f1a;
-      --surface:   #111827;
-      --border:    #1e2a3a;
-      --accent:    #00c8ff;
-      --accent2:   #7c3aed;
-      --text:      #e2e8f0;
-      --muted:     #64748b;
-      --tag-bg:    #162032;
-      --mono:      'JetBrains Mono', monospace;
-      --sans:      'Space Grotesk', sans-serif;
-    }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(ellipse 900px 500px at 15% -10%, #1a2540 0%, transparent 60%),
+      radial-gradient(ellipse 700px 500px at 100% 0%, #16233a 0%, transparent 55%),
+      var(--bg);
+    color:var(--ink);
+    font-family:var(--body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  ::selection{background:var(--green-dim); color:var(--green);}
+  :focus-visible{outline:2px solid var(--blue); outline-offset:3px; border-radius:4px;}
 
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--sans);
-      font-size: 16px;
-      line-height: 1.6;
-    }
+  .wrap{max-width:920px; margin:0 auto; padding:0 28px;}
 
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1rem 3rem;
-      background: rgba(11,15,26,0.88);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-    }
-    .logo { font-family: var(--mono); font-size: 0.9rem; color: var(--accent); letter-spacing: 0.05em; }
-    .nav-links { display: flex; gap: 1.8rem; list-style: none; }
-    .nav-links a {
-      text-decoration: none; color: var(--muted);
-      font-size: 0.8rem; font-weight: 500;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--accent); }
+  /* ---------- top status bar ---------- */
+  .statusbar{
+    border-bottom:1px solid var(--line-solid);
+    background:#0B111C;
+  }
+  .statusbar-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 28px; max-width:920px; margin:0 auto;
+    font-family:var(--mono); font-size:12px; color:var(--ink-faint);
+    flex-wrap:wrap; gap:8px;
+  }
+  .status-left{display:flex; align-items:center; gap:8px;}
+  .dot{
+    width:8px; height:8px; border-radius:50%; background:var(--green);
+    box-shadow:0 0 0 3px var(--green-dim);
+    animation: pulse 2.4s ease-in-out infinite;
+    flex-shrink:0;
+  }
+  @keyframes pulse{
+    0%,100%{ box-shadow:0 0 0 3px var(--green-dim); }
+    50%{ box-shadow:0 0 0 6px var(--green-dim); }
+  }
+  .status-right{color:var(--ink-faint); letter-spacing:.02em;}
+  .status-right b{color:var(--green); font-weight:600;}
 
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      display: flex; align-items: center;
-      padding: 7rem 3rem 4rem;
-      position: relative; overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute; top: -20%; left: -10%;
-      width: 700px; height: 700px;
-      background: radial-gradient(circle, rgba(0,200,255,0.07) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .hero::after {
-      content: '';
-      position: absolute; bottom: -10%; right: -5%;
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(124,58,237,0.07) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .hero-inner { max-width: 900px; }
-    .hero-label {
-      font-family: var(--mono); font-size: 0.8rem; color: var(--accent);
-      letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.2rem;
-      opacity: 0; animation: fadeUp 0.6s 0.2s forwards;
-    }
-    .hero h1 {
-      font-size: clamp(2.8rem, 7vw, 5rem); font-weight: 700;
-      line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1.2rem;
-      opacity: 0; animation: fadeUp 0.6s 0.35s forwards;
-    }
-    .hero h1 span {
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-    .hero-sub {
-      font-size: 1.05rem; color: var(--muted); max-width: 640px; margin-bottom: 2.5rem;
-      opacity: 0; animation: fadeUp 0.6s 0.5s forwards;
-    }
-    .hero-actions {
-      display: flex; gap: 1rem; flex-wrap: wrap;
-      opacity: 0; animation: fadeUp 0.6s 0.65s forwards;
-    }
-    .btn {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.75rem 1.75rem; border-radius: 6px;
-      font-size: 0.9rem; font-weight: 600;
-      text-decoration: none; transition: all 0.2s;
-      cursor: pointer; border: none;
-    }
-    .btn-primary { background: linear-gradient(135deg, var(--accent), #0099cc); color: #000; }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,200,255,0.3); }
-    .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text); }
-    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+  /* ---------- hero ---------- */
+  .hero{padding:64px 0 48px;}
+  .eyebrow{
+    font-family:var(--mono); font-size:12px; letter-spacing:.12em;
+    color:var(--ink-faint); text-transform:uppercase; margin-bottom:18px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:''; width:22px; height:1px; background:var(--ink-faint);}
+  h1{
+    font-family:var(--disp); font-weight:700;
+    font-size:clamp(2.4rem, 6vw, 3.6rem);
+    letter-spacing:-.02em; line-height:1.05;
+    color:var(--ink);
+  }
+  .role-line{
+    font-family:var(--mono); font-size:clamp(15px,2.4vw,18px);
+    color:var(--green); margin-top:14px; min-height:1.5em;
+  }
+  .role-line .cursor{display:inline-block; width:9px; height:1em; background:var(--green); vertical-align:-2px; margin-left:2px; animation:blink 1s step-end infinite;}
+  @keyframes blink{50%{opacity:0;}}
 
-    .hero-stats {
-      margin-top: 3rem;
-      display: flex; gap: 2.5rem; flex-wrap: wrap;
-      opacity: 0; animation: fadeUp 0.6s 0.8s forwards;
-    }
-    .stat-val {
-      font-size: 1.8rem; font-weight: 700;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-    .stat-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+  .summary{
+    margin-top:26px; max-width:640px; color:var(--ink-dim); font-size:15.5px;
+  }
 
-    /* SECTIONS */
-    section { padding: 5rem 3rem; }
-    .section-inner { max-width: 920px; margin: 0 auto; }
-    .section-tag {
-      font-family: var(--mono); font-size: 0.75rem; color: var(--accent);
-      letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.6rem;
-    }
-    h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 2.5rem; }
+  .contact-strip{
+    margin-top:34px; display:flex; flex-wrap:wrap; gap:10px;
+  }
+  .chip{
+    font-family:var(--mono); font-size:12.5px; color:var(--ink-dim);
+    border:1px solid var(--line-solid); background:var(--panel);
+    padding:8px 13px; border-radius:100px; display:flex; align-items:center; gap:7px;
+    text-decoration:none; transition:border-color .15s, color .15s, transform .15s;
+  }
+  .chip:hover{border-color:var(--blue); color:var(--ink); transform:translateY(-1px);}
+  .chip svg{width:13px; height:13px; opacity:.8; flex-shrink:0;}
 
-    /* ABOUT */
-    #about { background: var(--surface); }
-    .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 3rem; align-items: start; }
-    .about-text p { color: var(--muted); line-height: 1.85; margin-bottom: 1rem; font-size: 0.95rem; }
-    .contact-list { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
-    .contact-list li { display: flex; align-items: center; gap: 0.75rem; color: var(--muted); font-size: 0.88rem; }
-    .contact-list .icon { color: var(--accent); }
-    .contact-list a { color: var(--text); text-decoration: none; }
-    .contact-list a:hover { color: var(--accent); }
+  /* ---------- pipeline (signature element) ---------- */
+  .pipeline-section{padding:20px 0 56px;}
+  .pipeline-label{
+    font-family:var(--mono); font-size:12px; color:var(--ink-faint);
+    letter-spacing:.08em; margin-bottom:22px; text-transform:uppercase;
+  }
+  .pipeline{
+    position:relative;
+    display:flex; justify-content:space-between; align-items:flex-start;
+    padding:26px 4px 0;
+  }
+  .pipeline::before{
+    content:''; position:absolute; top:9px; left:0; right:0; height:2px;
+    background:linear-gradient(90deg, var(--line-solid) 0%, var(--line-solid) 100%);
+  }
+  .pipeline-track{
+    position:absolute; top:9px; left:0; height:2px; width:100%;
+    background:linear-gradient(90deg, var(--green) 0%, var(--green) 100%);
+    transform-origin:left;
+    animation:travel 7s ease-in-out infinite;
+  }
+  @keyframes travel{
+    0%{ width:0%; }
+    45%{ width:100%; }
+    55%{ width:100%; }
+    100%{ width:0%; }
+  }
+  .p-node{position:relative; flex:1; text-align:center; padding:0 4px;}
+  .p-node .node-dot{
+    width:18px; height:18px; border-radius:50%; background:var(--panel);
+    border:2px solid var(--line-solid); margin:0 auto 12px;
+    display:flex; align-items:center; justify-content:center;
+    position:relative; z-index:2;
+  }
+  .p-node .node-dot::after{content:''; width:6px; height:6px; border-radius:50%; background:var(--ink-faint);}
+  .p-node.active .node-dot{border-color:var(--green);}
+  .p-node.active .node-dot::after{background:var(--green);}
+  .p-node .node-label{font-family:var(--mono); font-size:11.5px; letter-spacing:.06em; color:var(--ink-dim); text-transform:uppercase;}
+  .p-node .node-sub{font-size:11.5px; color:var(--ink-faint); margin-top:4px; display:none;}
+  @media(min-width:700px){ .p-node .node-sub{display:block;} }
 
-    /* COMPETENCIES */
-    .comp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
-    .comp-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 10px; padding: 1.5rem;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .comp-card:hover { border-color: var(--accent); transform: translateY(-3px); }
-    .comp-card h3 { font-size: 0.8rem; font-weight: 600; color: var(--accent); margin-bottom: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; }
-    .tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
-    .tag {
-      background: var(--tag-bg); border: 1px solid var(--border);
-      border-radius: 4px; padding: 0.22rem 0.6rem;
-      font-family: var(--mono); font-size: 0.72rem; color: var(--text);
-    }
+  /* ---------- section shell ---------- */
+  section.block{padding:52px 0; border-top:1px solid var(--line-solid);}
+  .block-head{display:flex; align-items:baseline; gap:14px; margin-bottom:28px; flex-wrap:wrap;}
+  .pid{
+    font-family:var(--mono); font-size:12.5px; color:var(--blue);
+    background:var(--blue-dim); border:1px solid #64A8FF33;
+    padding:3px 9px; border-radius:5px; letter-spacing:.03em;
+  }
+  .block-title{font-family:var(--disp); font-weight:600; font-size:1.5rem; letter-spacing:-.01em;}
 
-    /* EXPERIENCE */
-    #experience { background: var(--surface); }
-    .timeline { display: flex; flex-direction: column; }
-    .tl-item {
-      display: grid; grid-template-columns: 150px 1fr;
-      gap: 2rem; position: relative; padding-bottom: 2.5rem;
-    }
-    .tl-item:last-child { padding-bottom: 0; }
-    .tl-item::before {
-      content: '';
-      position: absolute; left: 149px; top: 10px; bottom: 0;
-      width: 1px; background: var(--border);
-    }
-    .tl-item:last-child::before { display: none; }
-    .tl-item::after {
-      content: '';
-      position: absolute; left: 143px; top: 10px;
-      width: 13px; height: 13px; border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 12px rgba(0,200,255,0.5);
-    }
-    .tl-date { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); text-align: right; padding-top: 2px; line-height: 1.5; }
-    .tl-company { font-size: 0.72rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.2rem; }
-    .tl-role { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.75rem; }
-    .tl-content ul { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
-    .tl-content li { font-size: 0.86rem; color: var(--muted); padding-left: 1.1rem; position: relative; }
-    .tl-content li::before { content: '→'; position: absolute; left: 0; color: var(--accent); }
+  /* ---------- skills ---------- */
+  .skill-group{margin-bottom:20px;}
+  .skill-prompt{
+    font-family:var(--mono); font-size:12.5px; color:var(--ink-faint); margin-bottom:10px;
+  }
+  .skill-prompt span{color:var(--green);}
+  .tag-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .tag{
+    font-family:var(--mono); font-size:12.5px; color:var(--ink-dim);
+    background:var(--panel); border:1px solid var(--line-solid);
+    padding:6px 11px; border-radius:6px;
+  }
 
-    /* PROJECTS */
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 1.5rem; }
-    .project-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 12px; padding: 2rem;
-      transition: border-color 0.2s, transform 0.2s;
-      display: flex; flex-direction: column; gap: 0.85rem;
-    }
-    .project-card:hover { border-color: var(--accent2); transform: translateY(-4px); }
-    .proj-tech { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-    .proj-tech span {
-      font-family: var(--mono); font-size: 0.7rem; color: var(--accent2);
-      background: rgba(124,58,237,0.12); border: 1px solid rgba(124,58,237,0.3);
-      padding: 0.2rem 0.6rem; border-radius: 4px;
-    }
-    .project-card h3 { font-size: 1.05rem; font-weight: 600; }
-    .project-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
-    .project-card li { font-size: 0.84rem; color: var(--muted); padding-left: 1rem; position: relative; }
-    .project-card li::before { content: '▸'; position: absolute; left: 0; color: var(--accent2); }
-    .impact-badge {
-      display: inline-block; margin-top: 0.25rem;
-      background: rgba(0,200,255,0.1); border: 1px solid rgba(0,200,255,0.25);
-      border-radius: 4px; padding: 0.25rem 0.75rem;
-      font-family: var(--mono); font-size: 0.72rem; color: var(--accent);
-    }
+  /* ---------- certifications ---------- */
+  .cert-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:12px;}
+  .cert-card{
+    background:var(--panel); border:1px solid var(--line-solid); border-radius:var(--radius);
+    padding:16px 18px; display:flex; gap:12px; align-items:flex-start;
+  }
+  .cert-check{
+    width:20px; height:20px; border-radius:50%; flex-shrink:0; margin-top:2px;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--green-dim); color:var(--green);
+  }
+  .cert-check.pending{background:var(--amber-dim); color:var(--amber);}
+  .cert-check svg{width:12px; height:12px;}
+  .cert-name{font-size:14px; color:var(--ink); font-weight:500;}
+  .cert-status{font-family:var(--mono); font-size:11px; color:var(--green); margin-top:4px; letter-spacing:.03em;}
+  .cert-status.pending{color:var(--amber);}
 
-    /* SKILLS */
-    #skills { background: var(--surface); }
-    .skills-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; }
-    .skill-block {
-      background: var(--bg); border: 1px solid var(--border);
-      border-radius: 10px; padding: 1.4rem;
-      transition: border-color 0.2s;
-    }
-    .skill-block:hover { border-color: var(--accent); }
-    .skill-block h3 { font-size: 0.78rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem; }
+  /* ---------- experience ---------- */
+  .exp-entry{margin-bottom:36px;}
+  .exp-entry:last-child{margin-bottom:0;}
+  .exp-top{display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:6px; margin-bottom:4px;}
+  .exp-role{font-family:var(--disp); font-weight:600; font-size:1.05rem;}
+  .exp-date{font-family:var(--mono); font-size:12px; color:var(--ink-faint);}
+  .exp-org{font-size:13.5px; color:var(--green); margin-bottom:14px; font-family:var(--mono);}
+  .log-list{list-style:none;}
+  .log-list li{
+    font-size:14.5px; color:var(--ink-dim); padding-left:22px; position:relative; margin-bottom:10px;
+  }
+  .log-list li::before{
+    content:'>'; position:absolute; left:0; color:var(--ink-faint); font-family:var(--mono);
+  }
 
-    /* EDUCATION */
-    .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; }
-    .edu-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 10px; padding: 1.5rem;
-      transition: border-color 0.2s;
-    }
-    .edu-card:hover { border-color: var(--accent); }
-    .edu-card .year { font-family: var(--mono); font-size: 0.72rem; color: var(--accent); margin-bottom: 0.4rem; }
-    .edu-card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.3rem; }
-    .edu-card p { font-size: 0.82rem; color: var(--muted); }
-    .edu-card .score { margin-top: 0.5rem; font-family: var(--mono); font-size: 0.78rem; color: var(--text); }
+  /* ---------- projects ---------- */
+  .ticket{
+    background:var(--panel); border:1px solid var(--line-solid); border-radius:var(--radius);
+    padding:22px 24px; margin-bottom:16px; transition:border-color .15s, transform .15s;
+  }
+  .ticket:hover{border-color:#3FD68A55; transform:translateY(-2px);}
+  .ticket-head{display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:6px; flex-wrap:wrap;}
+  .ticket-id{font-family:var(--mono); font-size:11.5px; color:var(--ink-faint);}
+  .ticket-title{font-family:var(--disp); font-weight:600; font-size:1.05rem; margin-top:2px;}
+  .ticket-status{
+    font-family:var(--mono); font-size:10.5px; letter-spacing:.05em; color:var(--green);
+    background:var(--green-dim); border:1px solid #3FD68A33; padding:3px 9px; border-radius:5px;
+    white-space:nowrap; height:fit-content;
+  }
+  .ticket-tech{font-family:var(--mono); font-size:11.5px; color:var(--blue); margin-bottom:14px;}
+  .ticket ul{list-style:none; margin-top:12px;}
+  .ticket ul li{font-size:14px; color:var(--ink-dim); padding-left:18px; position:relative; margin-bottom:8px;}
+  .ticket ul li::before{content:'—'; position:absolute; left:0; color:var(--ink-faint);}
 
-    /* CONTACT */
-    #contact { background: var(--bg); text-align: center; }
-    #contact .section-inner { max-width: 600px; }
-    #contact p { color: var(--muted); margin-bottom: 2rem; font-size: 0.95rem; }
-    .contact-cards { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
-    .contact-card {
-      display: flex; align-items: center; gap: 0.6rem;
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 8px; padding: 0.9rem 1.4rem;
-      text-decoration: none; color: var(--text);
-      font-size: 0.86rem; font-weight: 500;
-      transition: all 0.2s;
-    }
-    .contact-card:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  /* ---------- education ---------- */
+  .edu-row{
+    display:flex; justify-content:space-between; gap:16px; padding:12px 0;
+    border-bottom:1px solid var(--line-solid); font-size:14.5px; flex-wrap:wrap;
+  }
+  .edu-row:last-child{border-bottom:none;}
+  .edu-name{color:var(--ink);}
+  .edu-meta{color:var(--ink-faint); font-family:var(--mono); font-size:12.5px;}
 
-    /* FOOTER */
-    footer {
-      text-align: center; padding: 1.5rem;
-      border-top: 1px solid var(--border);
-      color: var(--muted); font-size: 0.78rem;
-      font-family: var(--mono);
-    }
+  /* ---------- footer ---------- */
+  footer{
+    border-top:1px solid var(--line-solid); padding:56px 0 40px; text-align:center;
+  }
+  footer .eyebrow{justify-content:center;}
+  footer .eyebrow::before{display:none;}
+  footer h2{font-family:var(--disp); font-size:clamp(1.6rem,4vw,2.2rem); margin-bottom:22px;}
+  .cta-row{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom:36px;}
+  .btn{
+    font-family:var(--mono); font-size:13px; padding:12px 22px; border-radius:8px;
+    text-decoration:none; display:inline-flex; align-items:center; gap:8px;
+    transition:transform .15s, box-shadow .15s;
+  }
+  .btn-primary{background:var(--green); color:#08130E; font-weight:600;}
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 6px 20px #3FD68A33;}
+  .btn-ghost{border:1px solid var(--line-solid); color:var(--ink-dim);}
+  .btn-ghost:hover{border-color:var(--blue); color:var(--ink); transform:translateY(-2px);}
+  footer .fine{font-family:var(--mono); font-size:11.5px; color:var(--ink-faint);}
 
-    /* ANIMATIONS */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important; scroll-behavior:auto !important;}
+  }
 
-    /* RESPONSIVE */
-    @media (max-width: 720px) {
-      nav { padding: 1rem 1.5rem; }
-      .nav-links { gap: 1rem; }
-      .hero, section { padding-left: 1.5rem; padding-right: 1.5rem; }
-      .about-grid { grid-template-columns: 1fr; }
-      .tl-item { grid-template-columns: 1fr; }
-      .tl-item::before, .tl-item::after { display: none; }
-      .tl-date { text-align: left; }
-      .projects-grid { grid-template-columns: 1fr; }
-    }
-  </style>
+  .reveal{opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+</style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="logo"></div>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#competencies">Skills</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
-
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-inner">
-    <p class="hero-label">RPA Developer · Process Automation Specialist · Chennai, India</p>
-    <h1>Sudharsan S<br/><span>Automating the Future</span></h1>
-    <p class="hero-sub">
-      Results-driven RPA Developer with 4+ years at Tata Consultancy Services — specialising in end-to-end process automation using Automation Anywhere AA360. 6+ RPA implementations delivered across R2R, FMR, PTP, and OTC domains.
-    </p>
-    <div class="hero-actions">
-      <a href="#projects" class="btn btn-primary">View Projects</a>
-      <a href="#contact" class="btn btn-outline">Get In Touch</a>
-    </div>
-    <div class="hero-stats">
-      <div>
-        <div class="stat-val">4+</div>
-        <div class="stat-label">Years at TCS</div>
-      </div>
-      <div>
-        <div class="stat-val">6+</div>
-        <div class="stat-label">RPA Implementations</div>
-      </div>
-      <div>
-        <div class="stat-val">~7 hrs</div>
-        <div class="stat-label">Weekly Manual Effort Saved</div>
-      </div>
-	        <div>
-        <div class="stat-val">Automation Anywhere</div>
-        <div class="stat-label">Primary Skill</div>
-      </div>
-    </div>
+<div class="statusbar">
+  <div class="statusbar-inner">
+    <div class="status-left"><span class="dot"></span> SYSTEM STATUS: OPERATIONAL</div>
+    <div class="status-right">UPTIME: <b>4+ YEARS</b> · LAST INCIDENT: NONE ON RECORD</div>
   </div>
-</section>
+</div>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="section-inner">
-    <p class="section-tag">About</p>
-    <h2>Who I Am</h2>
-    <div class="about-grid">
-      <div class="about-text">
-        <p>
-          I'm an RPA Developer at Tata Consultancy Services with 4+ years of IT experience, specialising in end-to-end process automation using Automation Anywhere (AA360 & AA v11). I have a proven track record across 6+ RPA implementations covering process design, FDD preparation, UAT support, and production management.
-        </p>
-        <p>
-          I work across R2R, PTP, and OTC domains — bridging the gap between business requirements and technical automation by translating complex IT needs into scalable, resilient bots with robust exception-handling and manual queue handover mechanisms.
-        </p>
-        <p>
-          I'm currently pursuing an MBA in Business Data Analytics at Madras University, broadening my analytical toolkit to complement my automation expertise with data-driven insights.
-        </p>
-      </div>
-      <div>
-        <ul class="contact-list">
-          <li><span class="icon">📍</span> Chennai, India</li>
-          <li><span class="icon">📧</span> <a href="mailto:sudhan282001@gmail.com">sudhan282001@gmail.com</a></li>
-          <li><span class="icon">📞</span> <a href="tel:+916380805546">+91 6380805546</a></li>
-          <li><span class="icon">🔗</span> <a href="https://www.linkedin.com/in/sudharsan-s-a544b7222" target="_blank">LinkedIn Profile</a></li>
-          <li><span class="icon">🎓</span> MBA (Business Data Analytics) — Pursuing</li>
-          <li><span class="icon">🏢</span> Tata Consultancy Services · Dec 2021 – Present</li>
-        </ul>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow">Chennai, India</div>
+    <h1>Sudharsan&nbsp;S</h1>
+    <div class="role-line" id="roleLine"></div>
+    <p class="summary">I keep bots running so businesses don't have to think about it. 4+ years turning "something broke" into "already fixed" — monitoring, triaging, and resolving issues across Automation Anywhere (AA360/AA v11) in live enterprise environments. From first alert to final fix, I handle the full incident lifecycle: spotting anomalies, running diagnostics, validating data with SQL, and escalating what needs bigger hands. Currently leveling up with PL-500 (Power Automate RPA Developer Associate) — because the best support engineers never stop learning new platforms.</p>
+
+    <div class="contact-strip">
+      <a class="chip" href="mailto:sudhan282001@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6l9 7 9-7"/><rect x="3" y="4" width="18" height="16" rx="2"/></svg>
+        sudhan282001@gmail.com
+      </a>
+      <a class="chip" href="tel:+916380805546">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .6 2.9a2 2 0 0 1-.4 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.5 2.9.6a2 2 0 0 1 1.7 2z"/></svg>
+        +91 63808 05546
+      </a>
+      <a class="chip" href="#" onclick="return false;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a class="chip" href="Sudharsan_Resume.pdf" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+        Download resume
+      </a>
+    </div>
+  </header>
+
+  <section class="pipeline-section reveal">
+    <div class="pipeline-label">// what a day on the job looks like</div>
+    <div class="pipeline">
+      <div class="pipeline-track"></div>
+      <div class="p-node active"><div class="node-dot"></div><div class="node-label">Monitor</div><div class="node-sub">Dashboards &amp; bot health</div></div>
+      <div class="p-node"><div class="node-dot"></div><div class="node-label">Detect</div><div class="node-sub">Flag anomalies</div></div>
+      <div class="p-node"><div class="node-dot"></div><div class="node-label">Log</div><div class="node-sub">Ticket + context</div></div>
+      <div class="p-node"><div class="node-dot"></div><div class="node-label">Triage</div><div class="node-sub">Runbook diagnostics</div></div>
+      <div class="p-node"><div class="node-dot"></div><div class="node-label">Escalate</div><div class="node-sub">Handover to L2/L3</div></div>
+      <div class="p-node"><div class="node-dot"></div><div class="node-label">Resolve</div><div class="node-sub">Close &amp; document</div></div>
+    </div>
+  </section>
+
+  <section class="block reveal">
+    <div class="block-head"><span class="block-title">SKILLS</span></div>
+
+    <div class="skill-group">
+      <div class="skill-prompt"><span>$</span> RPA Platforms</div>
+      <div class="tag-row">
+        <span class="tag">Automation Anywhere AA360</span><span class="tag">Automation Anywhere v11</span>
+        <span class="tag">Power Automate (foundational)</span><span class="tag">Power Apps (foundational)</span>
+        <span class="tag">UiPath (concepts)</span><span class="tag">Xceptor</span>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- CORE COMPETENCIES -->
-<section id="competencies">
-  <div class="section-inner">
-    <p class="section-tag">Core Competencies</p>
-    <h2>What I Do Best</h2>
-    <div class="comp-grid">
-      <div class="comp-card">
-        <h3>RPA Lifecycle & Design</h3>
-        <div class="tags">
-          <span class="tag">FDD Preparation</span>
-          <span class="tag">Process Feasibility</span>
-          <span class="tag">Solution Architecture</span>
-          <span class="tag">Exception Handling</span>
-          <span class="tag">Manual Queue Design</span>
-        </div>
-      </div>
-      <div class="comp-card">
-        <h3>Automation Skills</h3>
-        <div class="tags">
-          <span class="tag">AA360 Packages</span>
-          <span class="tag">PDF Automation</span>
-          <span class="tag">Excel Automation</span>
-          <span class="tag">Email Automation</span>
-          <span class="tag">Web Automation</span>
-          <span class="tag">DOMXPath</span>
-          <span class="tag">VBA</span>
-        </div>
-      </div>
-      <div class="comp-card">
-        <h3>Testing & Quality</h3>
-        <div class="tags">
-          <span class="tag">Test Case Design</span>
-          <span class="tag">UAT Support</span>
-          <span class="tag">Defect Tracking</span>
-          <span class="tag">ALM QC</span>
-          <span class="tag">Pre-UAT Docs</span>
-        </div>
-      </div>
-      <div class="comp-card">
-        <h3>Domain Knowledge</h3>
-        <div class="tags">
-          <span class="tag">R2R</span>
-          <span class="tag">FMR</span>
-          <span class="tag">Finance Process</span>
-          <span class="tag">FP&A Basics</span>
-        </div>
-      </div>
-      <div class="comp-card">
-        <h3>Technical Skills</h3>
-        <div class="tags">
-          <span class="tag">Automation Anywhere AA360</span>
-          <span class="tag">AA v11</span>
-          <span class="tag">Xceptor</span>
-          <span class="tag">Python</span>
-          <span class="tag">SQL</span>
-          <span class="tag">Power BI</span>
-        </div>
-      </div>
-      <div class="comp-card">
-        <h3>Soft Skills</h3>
-        <div class="tags">
-          <span class="tag">Cross-Functional Collaboration</span>
-          <span class="tag">Stakeholder Communication</span>
-          <span class="tag">Status Reporting</span>
-          <span class="tag">Concurrent Activity Mgmt</span>
-          <span class="tag">Independent Prioritisation</span>
-        </div>
+    <div class="skill-group">
+      <div class="skill-prompt"><span>$</span> Monitoring &amp; Support</div>
+      <div class="tag-row">
+        <span class="tag">Bot health dashboards</span><span class="tag">Control Room monitoring</span>
+        <span class="tag">Incident logging</span><span class="tag">First-line troubleshooting</span>
+        <span class="tag">Escalation management</span>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-inner">
-    <p class="section-tag">Experience</p>
-    <h2>Work History</h2>
-    <div class="timeline">
-
-      <div class="tl-item">
-        <div class="tl-date">Jun 2023<br/>— Present</div>
-        <div class="tl-content">
-          <div class="tl-company">Tata Consultancy Services</div>
-          <div class="tl-role">RPA Developer</div>
-          <ul>
-            <li>Collaborate with Process SMEs and Operations teams to translate business processes into detailed FDDs covering all scenarios and edge cases.</li>
-            <li>Lead bot design and development using AA360 across PDF, Excel, Email, and Web automation in R2R, FMR, OTC, and PTP domains.</li>
-            <li>Implement exception-handling controls and manual queue handovers to ensure process continuity for out-of-scope scenarios.</li>
-            <li>Assess new automation opportunities for feasibility, define solution architecture, and deliver scalable bots to business requirements.</li>
-            <li>Report automation status, metrics, risks, and issues to Tech Leads across the full delivery lifecycle.</li>
-            <li>Delivered 6+ RPA implementations end-to-end — from requirements gathering through production deployment.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-date">Dec 2021<br/>— May 2023</div>
-        <div class="tl-content">
-          <div class="tl-company">Tata Consultancy Services</div>
-          <div class="tl-role">UAT Admin / UAT Support</div>
-          <ul>
-            <li>Managed user roles, access control, and device onboarding within the Automation Anywhere Control Room.</li>
-            <li>Documented test procedures and maintained test cases in ALM QC for pre-UAT and UAT phases.</li>
-            <li>Created and tracked defects in ALM, coordinating with stakeholders for timely resolution and sign-off.</li>
-            <li>Supported RPA developers during UAT — providing clarifications, capturing evidence, and streamlining defect identification.</li>
-            <li>Independently resolved UAT environment issues, minimising disruption to testing timelines.</li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-inner">
-    <p class="section-tag">Key RPA Implementations</p>
-    <h2>Bot Deployments</h2>
-    <div class="projects-grid">
-
-      <div class="project-card">
-        <div class="proj-tech"><span>Automation Anywhere</span><span>VBA</span></div>
-        <h3>Exception Report Review</h3>
-        <ul>
-          <li>Automated input file downloads from web dashboard, iterating through multiple spoke groups with screenshot evidence capture.</li>
-          <li>Automated current-month and prior-quarter report retrieval with adherence percentage calculations and exception threshold logic.</li>
-          <li>Designed end-to-end FDD, test cases, and exception-handling logic with automated stakeholder email notifications.</li>
-        </ul>
-        <span class="impact-badge">⚡ ~3 hrs manual effort eliminated per week</span>
-      </div>
-
-      <div class="project-card">
-        <div class="proj-tech"><span>Automation Anywhere</span></div>
-        <h3>MIM Production Validation Number</h3>
-        <ul>
-          <li>Automated large-volume Excel data processing (200+ records/run): removed duplicates, segmented by owner, generated personalised files with dropdown action columns.</li>
-          <li>Deployed a follow-up bot to consolidate owner responses after 7 days into a master file and auto-update system records via web interaction.</li>
-          <li>Mapped full business process to RPA build with controls for owner action exceptions and manual intervention triggers.</li>
-        </ul>
-        <span class="impact-badge">⚡ ~4 hrs manual effort reduced per cycle</span>
-      </div>
-
-      <div class="project-card">
-        <div class="proj-tech"><span>Automation Anywhere</span></div>
-        <h3>Offer Letter Automation</h3>
-        <ul>
-          <li>Automated personalised offer letter generation by processing structured Excel data and populating Word document templates.</li>
-          <li>Incorporated validation logic and automated email dispatch to streamline the end-to-end HR document workflow.</li>
-        </ul>
-      </div>
-
-      <div class="project-card">
-        <div class="proj-tech"><span>Automation Anywhere</span></div>
-        <h3>Ticket Booking Automation</h3>
-        <ul>
-          <li>Streamlined ticket booking workflows with date validation and web automation.</li>
-          <li>Reduced manual effort and booking errors through intelligent process automation.</li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- EDUCATION -->
-<section id="education">
-  <div class="section-inner">
-    <p class="section-tag">Education</p>
-    <h2>Academic Background</h2>
-    <div class="edu-grid">
-      <div class="edu-card">
-        <div class="year">In Progress · Expected 2026</div>
-        <h3>MBA — Business Data Analytics</h3>
-        <p>Madras University, Chennai (Part-Time)</p>
-      </div>
-      <div class="edu-card">
-        <div class="year">2018 – 2021</div>
-        <h3>B.Sc</h3>
-        <p>SSS College of Arts & Science, Ranipet</p>
-        <div class="score">CGPA: 6.55</div>
+    <div class="skill-group">
+      <div class="skill-prompt"><span>-></span> Ticketing</div>
+      <div class="tag-row">
+        <span class="tag">ALM QC</span><span class="tag">Defect tracking</span><span class="tag">UAT support</span>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-inner">
-    <p class="section-tag">Contact</p>
-    <h2>Let's Connect</h2>
-    <p>Open to new opportunities, RPA projects, and automation challenges. Feel free to reach out!</p>
-    <div class="contact-cards">
-      <a href="mailto:sudhan282001@gmail.com" class="contact-card">📧 sudhan282001@gmail.com</a>
-      <a href="tel:+916380805546" class="contact-card">📞 +91 6380805546</a>
-      <a href="https://www.linkedin.com/in/sudharsan-s-a544b7222" target="_blank" class="contact-card">🔗 LinkedIn</a>
+    <div class="skill-group">
+      <div class="skill-prompt"><span>-></span> Query &amp; Data</div>
+      <div class="tag-row">
+        <span class="tag">SQL</span><span class="tag">Excel reporting</span><span class="tag">Power BI</span>
+      </div>
     </div>
-  </div>
-</section>
+    <div class="skill-group">
+      <div class="skill-prompt"><span>-></span> Scripting</div>
+      <div class="tag-row">
+        <span class="tag">VBA</span><span class="tag">Python</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-prompt"><span>-></span> Soft Skills</div>
+      <div class="tag-row">
+        <span class="tag">Incident communication</span><span class="tag">Documentation &amp; runbooks</span>
+        <span class="tag">Attention to detail</span><span class="tag">Cross-functional collaboration</span>
+        <span class="tag">Prioritization under pressure</span>
+      </div>
+    </div>
+  </section>
 
-<!-- FOOTER -->
-<footer>
-  <p>Sudharsan S · RPA Developer · Chennai © 2025</p>
-</footer>
+  <section class="block reveal">
+    <div class="block-head"><span class="block-title">CERTIFCATIONS</span></div>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <div><div class="cert-name">Automation Anywhere Certified Advanced RPA Professional</div><div class="cert-status">VERIFIED</div></div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <div><div class="cert-name">Xceptor: Core Configuration Foundation</div><div class="cert-status">VERIFIED</div></div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <div><div class="cert-name">Analyzing &amp; Visualizing Data with Microsoft Power BI</div><div class="cert-status">VERIFIED</div></div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <div><div class="cert-name">Generative AI for Leaders &amp; Business Professionals</div><div class="cert-status">VERIFIED</div></div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-check pending"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+        <div><div class="cert-name">Microsoft Certified: Power Automate RPA Developer Associate (PL-500)</div><div class="cert-status pending">IN PROGRESS</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block reveal">
+    <div class="block-head"><span class="block-title">EXPERIENCE</span></div>
+
+    <div class="exp-entry">
+      <div class="exp-top"><span class="exp-role">RPA Developer — Production Support</span><span class="exp-date">Jun 2024 – Present</span></div>
+      <div class="exp-org">Tata Consultancy Services</div>
+      <ul class="log-list">
+        <li>Monitor health and performance of live Automation Anywhere bots against established dashboards; identify anomalies and log incidents promptly with detailed descriptions, screenshots, and context.</li>
+        <li>Perform first-line troubleshooting and diagnostics using runbooks and knowledge base articles to resolve common automation failures.</li>
+        <li>Escalate complex or unresolved incidents to senior engineers and development teams with a clear, complete handover.</li>
+        <li>Execute pre-defined SQL queries to validate data and assist in diagnosing automation failures under supervision.</li>
+        <li>Apply robust coding practices across PDF, Excel, Email, and Web automation packages within AA360.</li>
+        <li>Contribute to support documentation, runbooks, and knowledge base articles based on issues observed and resolutions implemented.</li>
+        <li>Support testing of updates, patches, and version upgrades for RPA components as directed by senior engineers.</li>
+      </ul>
+    </div>
+
+    <div class="exp-entry">
+      <div class="exp-top"><span class="exp-role">UAT Admin / UAT Support</span><span class="exp-date">Mar 2022 – May 2024</span></div>
+      <div class="exp-org">Tata Consultancy Services</div>
+      <ul class="log-list">
+        <li>Managed user roles, access control, and device/user onboarding within the Automation Anywhere Control Room.</li>
+        <li>Monitored and resolved environment-level issues during UAT cycles, maintaining timely stakeholder communication.</li>
+        <li>Logged, tracked, and maintained test cases and defects in ALM QC — a workflow directly comparable to ServiceNow / Jira Service Management.</li>
+        <li>Collaborated with developers during UAT testing to clarify defects and accelerate resolution turnaround.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block reveal">
+    <div class="block-head"><span class="block-title">PROJECTS</span></div>
+
+    <div class="ticket">
+      <div class="ticket-head">
+        <div><div class="ticket-id"></div><div class="ticket-title">Exception Report Review</div></div>
+        <div class="ticket-status">LIVE</div>
+      </div>
+      <div class="ticket-tech">Automation Anywhere · VBA</div>
+      <ul>
+        <li>Automated input-file downloads from a web dashboard, iterating through multiple spoke groups and capturing screenshots as evidence.</li>
+        <li>Retrieved current-month and prior-quarter reports and calculated adherence percentages against predefined thresholds.</li>
+        <li>Triggered issue creation for out-of-threshold exceptions and sent automated stakeholder email notifications.</li>
+      </ul>
+    </div>
+
+    <div class="ticket">
+      <div class="ticket-head">
+        <div><div class="ticket-id"></div><div class="ticket-title">MIM Production Validation Number</div></div>
+        <div class="ticket-status">LIVE</div>
+      </div>
+      <div class="ticket-tech">Automation Anywhere</div>
+      <ul>
+        <li>Processed large Excel datasets of Process IDs and owner details, de-duplicating records and generating per-owner action files.</li>
+        <li>Sent personalized emails requesting dropdown-based responses; built a follow-up bot to consolidate returns into a master report after 7 days.</li>
+        <li>Automated system record updates by searching Process IDs and applying owner-selected actions.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block reveal">
+    <div class="block-head"><span class="pid"></span><span class="block-title">Education</span></div>
+    <div class="edu-row"><span class="edu-name">MBA (Business Data Analytics) — Madras University, Chennai</span><span class="edu-meta">Pursuing · Part-Time</span></div>
+    <div class="edu-row"><span class="edu-name">B.Sc — SSS College of Arts and Science, Ranipet</span><span class="edu-meta">6.55 CGPA · 2018–2021</span></div>
+    <div class="edu-row"><span class="edu-name">Senior Secondary — Tamil Nadu State Board</span><span class="edu-meta">64.75% · 2018</span></div>
+    <div class="edu-row"><span class="edu-name">Secondary — Tamil Nadu State Board</span><span class="edu-meta">80.20% · 2016</span></div>
+  </section>
+
+  <footer class="reveal">
+    <div class="eyebrow">Status: open to new incidents</div>
+    <h2>Let's fix something together.</h2>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="mailto:sudhan282001@gmail.com">Email me →</a>
+      <a class="btn btn-ghost" href="tel:+916380805546">Call +91 63808 05546</a>
+    </div>
+    <div class="fine">Chennai, India · Sudharsan S · Built for the console, not the boardroom</div>
+  </footer>
+
+</div>
+
+<script>
+  // Typed role line
+  const roleText = "RPA Developer & Automation Support Engineer";
+  const roleEl = document.getElementById('roleLine');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion) {
+    roleEl.textContent = roleText;
+  } else {
+    let i = 0;
+    function typeChar(){
+      if (i <= roleText.length){
+        roleEl.innerHTML = roleText.slice(0,i) + '<span class="cursor"></span>';
+        i++;
+        setTimeout(typeChar, 32);
+      }
+    }
+    typeChar();
+  }
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !reduceMotion){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    revealEls.forEach(el=>io.observe(el));
+  } else {
+    revealEls.forEach(el=>el.classList.add('in'));
+  }
+
+  // Animate pipeline active node in sync with track travel
+  const nodes = document.querySelectorAll('.p-node');
+  if (!reduceMotion){
+    let step = 0;
+    setInterval(()=>{
+      nodes.forEach(n=>n.classList.remove('active'));
+      nodes[step].classList.add('active');
+      step = (step+1) % nodes.length;
+    }, 1000);
+  } else {
+    nodes.forEach(n=>n.classList.add('active'));
+  }
+</script>
 
 </body>
 </html>
